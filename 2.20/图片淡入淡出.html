@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>图片淡入淡出</title>
+<style>
+#div1{
+	width:100px;
+	height:100px;
+	background-color:#F40004;
+	opacity:0.3;
+}
+</style>
+<script>
+window.onload=function(){
+	var timer=null;
+	var alpha=30;
+		oDiv1=document.getElementById('div1');
+	
+		function mover(iTarget){
+			var speed=0;
+			if(iTarget > alpha){
+				
+				speed=1;
+
+			
+			}else{
+				
+				speed=-1;
+					
+			}
+			clearInterval(timer)
+			timer=setInterval(function(){
+				
+				if(alpha==iTarget){
+			    
+				clearInterval(timer)
+				}else{
+					alpha+=speed;
+				}
+				
+				oDiv1.style.opacity=alpha/100;
+				
+			},30)
+}
+
+		oDiv1.onmouseover=function(){
+			mover(100)
+			
+			}
+			oDiv1.onmouseout=function(){
+			mover(30)
+			
+			}
+	
+	
+	}
+</script>
+</head>
+
+<body>
+
+<div id="div1">
+</div>
+</body>
+</html>

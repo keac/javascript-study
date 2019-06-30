@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{
+	margin:0;
+	padding:0;
+}
+ul{
+	list-style:none;
+	position:absolute;
+	left:0;
+	
+	
+}
+ul li{
+	float:left;
+}
+ul li img{
+	width:300px;
+}
+#div1{
+	background-color:red;
+	width:1500px;
+	height:162px;
+	margin:10px auto;
+	overflow:hidden;
+	position:relative;
+
+}
+</style>
+<script>
+window.onload=function(){
+	var timer=null;
+	oDiv=document.getElementById('div1');
+	oUl=oDiv.getElementsByTagName('ul')[0]
+	aLi=oUl.getElementsByTagName('li')
+	oUl.innerHTML+=oUl.innerHTML;
+
+	function move(){
+		oUl.style.width=aLi[0].offsetWidth*aLi.length+'px';
+		if(oUl.offsetLeft<-oUl.offsetWidth/2){
+			oUl.style.left='0';
+			
+		}
+		if(oUl.offsetLeft>0){
+			oUl.style.left=-oUl.offsetWidth/2+'px';
+          }
+	oUl.style.left=oUl.offsetLeft+2+"px";
+		}
+		timer=setInterval(move,30);
+		oDiv.onmouseout=function(){timer=setInterval(move,30);};
+		oDiv.onmouseover=function(){clearInterval(timer)}
+
+
+	
+	}
+</script>
+</head>
+
+<body>
+<div id="div1">
+<ul id="ul">
+  <li> <img src="img/t (1).jpg"> </li>
+  <li> <img src="img/t (2).jpg"> </li>
+  <li> <img src="img/t (3).jpg"> </li>
+  <li> <img src="img/t (4).jpg"> </li>
+  <li> <img src="img/t (5).jpg"> </li>
+</ul>
+</div>
+</body>
+</html>

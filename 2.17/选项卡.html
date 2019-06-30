@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>选项卡</title>
+<style>
+#div1 div{
+	width:200px;
+	height:200px;
+	background-color:#DCDCDC;
+	display:none;
+}
+.a{
+	background-color:#E98200;
+}
+</style>
+<script>
+window.onload=function(){
+	
+	bu=document.getElementsByTagName('input');
+	odiv=document.getElementById('div1');
+	divs=odiv.getElementsByTagName('div');
+	for(var i=0;i<bu.length;i++){
+		
+		bu[i].index=i;
+		
+		
+		bu[i].onclick=function(){
+		
+			
+			for(var t=0;t<divs.length;t++){
+				
+				divs[t].style.display='none';
+				bu[t].className='';
+				
+				}
+			
+			divs[this.index].style.display='block'
+			
+			this.className='a';
+			
+			}
+
+		}
+	}
+</script>
+
+</head>
+
+<body>
+
+<input type="button" value="1111" class="a">
+<input type="button" value="2222">
+<input type="button" value="3333">
+<input type="button" value="4444">
+<div id="div1">
+<div style="display:block">
+1111
+</div>
+<div>
+2222
+</div>
+<div>
+3333
+</div>
+<div>
+4444	
+</div>
+</div>
+</body>
+</html>

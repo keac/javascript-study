@@ -1,0 +1,101 @@
+ <!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+
+</style>
+<script type="text/javascript" src="../jquery-2.2.2.js"></script>
+<script>
+$(document).ready(function(e) {
+	$('button:eq(0)').click(function()
+	{
+		//选择含有Id的
+		alert($('div[id]').text());
+	});
+		$('button:eq(1)').click(function()
+	{
+		
+		alert($('div[id="233"]').text());
+	});
+		$('button:eq(2)').click(function()
+	{
+		
+		alert($('div[id!="233"]').text());
+	});
+		$('button:eq(3)').click(function()
+	{
+		
+		alert($('div[id^="name"]').text());
+	});
+	$('button:eq(4)').click(function()
+	{
+		
+		alert($('div[id$="name"]').text());
+	});
+	$('button:eq(5)').click(function()
+	{
+		
+		alert($('div[id*="q"]').text());
+	});
+	$('button:eq(6)').click(function()
+	{
+		
+		alert($('div[id*="q"][class="233"]').text());
+	});
+});
+</script> 
+</head>
+<body>
+<button>
+选择含有Id的
+</button>
+<button>
+选择值相等的
+</button>
+<button>
+选择值不相等的
+</button>
+<button>
+选择Id 开头^
+</button>
+<button>
+选择Id结尾$
+</button>
+<button>
+选择Id包含的
+</button>
+<button>
+同时满足
+</button>
+<br>
+<br>
+<br>
+<br>
+<div id="233">
+Id=233
+</div>
+<div class="12323">
+无Id
+</div>
+<div id="Div1">
+id=Div1
+</div>
+<div id="name1">
+id=name1
+</div>
+<div id="name2">
+id=name2
+</div>
+<div id="2name">
+id=2name
+</div>
+<div id="qwer">
+id="qwer"
+</div>
+<div id="qwert" class="233">
+id="qwert" class="233"
+</div>
+</body>
+</html>

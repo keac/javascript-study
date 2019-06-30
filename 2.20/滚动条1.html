@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+
+<style>
+input{
+	top:0px;
+	position:fixed;
+}
+</style>
+
+<script>
+window.onload=function(){
+	
+	oTxt1=document.getElementById('txt1');
+	oTxt1.onclick=function(){
+		document.body.scrollTop=0;
+		}
+	setInterval(function(){oTxt1.value= document.body.scrollTop||document.documentElement.scrollTop;},30)
+	
+	}
+</script>
+</head>
+
+<body style="height:2000px">
+<input id="txt1" type="text">
+<div id="div1">
+</div>
+</body>
+</html>

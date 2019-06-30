@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+#div1 {
+	width: 100px;
+	height: 200px;
+	border: 1px solid #D0D0D0;
+	display:none;
+	position:absolute;
+}
+#div1 ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+#div1 ul li {
+	background-color: #EFEFEF;
+	margin-top: 5px;
+	text-align: center;
+}
+</style>
+
+
+<script>
+document.oncontextmenu=function(ev){
+		var Event=ev||event;
+		oDiv1=document.getElementById('div1');
+		oDiv1.style.display='block'
+		oDiv1.style.left=Event.clientX+'px';
+		oDiv1.style.top=Event.clientY+'px';
+		
+		return false;	
+}
+document.onclick=function(){
+	oDiv1=document.getElementById('div1');
+	oDiv1.style.display='none';
+	
+}
+	
+	
+
+</script>
+</head>
+
+<body>
+<div id="div1">
+  <ul>
+    <li> aaa </li>
+    <li> aaa </li>
+    <li> aaa </li>
+  </ul>
+</div>
+</body>
+</html>

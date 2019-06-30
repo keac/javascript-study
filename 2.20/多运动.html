@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+div {
+	width: 100px;
+	height: 30px;
+	margin: 30px;
+	background-color: #4ECC00;
+}
+</style>
+<script>
+window.onload=function(){
+	/*oDiv1=document.getElementById('div1')
+	function move2(iTarget){
+			clearInterval(oDiv1.timer)
+			var speed=(iTarget-oDiv1.offsetWidth)/10;
+			speed=speed>0?Math.ceil(speed):Math.floor(speed);
+			oDiv1.timer=setInterval(function(){
+					if(oDiv1.offsetWidth==iTarget){
+							oDiv1.style.backgroundColor='#4ECC00';
+						clearInterval(oDiv1.timer)
+						}else{
+						oDiv1.style.width=oDiv1.offsetWidth+speed+'px';
+						oDiv1.style.backgroundColor='red';
+						}
+					
+					document.title=oDiv1.offsetWidth+' '+iTarget;
+				
+				},30)
+			
+		
+		}
+		oDiv1.onmouseover=function(){
+			move2(400)
+			}
+			oDiv1.onmouseout=function(){
+			move2(100)
+			}*/
+		
+	oDiv=document.getElementsByTagName('div');
+	for(var i=0;i<oDiv.length;i++){
+			oDiv[i].timer=null;
+			oDiv[i].onmouseover=function(){
+				mover(this,400)	
+				
+			}
+			oDiv[i].onmouseout=function(){
+				mover(this,100)	
+			}
+		
+		}
+	function mover(obj,iTarget){
+			clearInterval(obj.timer)
+			var speed=(iTarget-obj.offsetWidth)/6;
+			speed=speed>0?Math.ceil(speed):Math.floor(speed);
+			obj.timer=setInterval(function(){
+					if(obj.offsetWidth==iTarget){
+						obj.style.backgroundColor='#4ECC00';
+						clearInterval(obj.timer)
+						}else{
+					obj.style.width=obj.offsetWidth+speed+'px';
+					obj.style.backgroundColor='red';
+						}
+					
+					document.title=obj.offsetWidth+' '+iTarget;
+				
+				},30)
+			
+		
+		}
+
+	
+	}
+</script>
+</head>
+
+<body>
+<div>
+</div>
+<div> </div>
+</body>
+</html>

@@ -1,0 +1,164 @@
+﻿<!doctype html>
+<html> 
+<head> 
+<meta charset="utf-8">
+<title></title> 
+<script language="javascript" src="mover.js"></script>
+<link href="images/css.css" rel="stylesheet" type="text/css" />
+<script>
+window.onload=function(){
+var oPay=document.getElementById('playimages');	
+
+var oprev=getByClass(oPay,'prev')[0];
+var next=getByClass(oPay,'next')[0];
+var omark_left=getByClass(oPay,'mark_left')[0];
+var omark_right=getByClass(oPay,'mark_right')[0];
+
+var oUlSmall=getByClass(oPay,'small_pic')[0];
+
+var oUlSmall1=oUlSmall.getElementsByTagName('ul')[0];
+
+var aLiSmall=oUlSmall.getElementsByTagName('li');
+
+var oUlBig=getByClass(oPay,'big_pic')[0];
+var aLiBig=oUlBig.getElementsByTagName('li');
+
+var nowzIndex=2;
+var now=0;
+
+//左右按钮
+oprev.onmouseover=omark_left.onmouseover=function(){
+	
+	mover( oprev,'opacity',0.8)	;
+	
+	}
+	oprev.onmouseout=omark_left.onmouseout=function(){
+	
+	mover( oprev,'opacity',0);	
+	
+	}
+	next.onmouseover=omark_right.onmouseover=function(){
+	
+	mover( next,'opacity',0.8)	;
+	
+	}
+	next.onmouseout=omark_right.onmouseout=function(){
+	
+	mover( next,'opacity',0);	
+	
+	}
+//大图切换
+for(var t=0;t< aLiSmall.length;t++){
+	 aLiSmall[t].index=t;
+	 aLiSmall[t].onclick=function(){
+		 if(this.index==now) return;
+		 now=this.index;
+	 Tab()
+	}
+	
+
+	aLiSmall[t].onmouseover=function(){
+		
+		mover(this,'opacity',1)
+		}
+	aLiSmall[t].onmouseout=function(){
+		
+		if(this.index!=now){
+		
+		mover(this,'opacity',0.6)
+		}
+		}
+
+	
+	
+	}
+
+next.onclick=function(){
+	now++;
+	if(now==aLiSmall.length){
+		now=1;	
+	}
+	 Tab()
+	}	
+oprev.onclick=function(){
+	now--;
+	if(now==-1){
+		now=aLiSmall.length-1;	
+	}
+	
+	 Tab()
+	}
+timer=setInterval(next.onclick,1000)
+oPay.onmouseover=function(){
+	clearInterval(timer);
+	}
+oPay.onmouseout=function(){
+	timer=setInterval(next.onclick,1000)
+	}
+
+function Tab(){
+	aLiBig[now].style.zIndex=nowzIndex++;	
+	 
+	 for(var a=0;a<aLiSmall.length;a++){
+		 
+		 mover(aLiSmall[a],'opacity',0.6)
+		 
+		 } 
+	if(now==0){
+		
+		mover(oUlSmall1,'left',0);
+	}else if(now==aLiSmall.length-1){
+		mover(oUlSmall1,'left',-(now-2)*aLiSmall[0].offsetWidth);
+		}else{
+		mover(oUlSmall1,'left',-(now-1)*aLiSmall[0].offsetWidth);
+		}
+		oUlSmall1.style.width=aLiSmall[0].offsetWidth*aLiSmall.length+'px';
+		
+		 mover(aLiSmall[now],'opacity',1)
+	 var LiBigh=aLiBig[now].offsetHeight;
+	 aLiBig[now].style.height=0; 
+	 mover(aLiBig[now],'height',LiBigh)
+	
+	
+	}
+
+
+}
+</script>
+</head> 
+ 
+<body> 
+<div id="playimages" class="play"> 
+    <ul class="big_pic"> 
+ 
+		<div class="prev"></div> 
+		<div class="next"></div> 
+ 
+		<div class="text">加载图片说明……</div> 
+		<div class="length">计算图片数量……</div> 
+		
+		<a class="mark_left" href="javascript:;"></a> 
+		<a class="mark_right" href="javascript:;"></a> 
+		<div class="bg"></div> 
+		
+        <li style="z-index:1;"><img src="images/1.jpg" /></li> 
+        <li><img src="images/2.jpg" /></li> 
+        <li><img src="images/3.jpg" /></li> 
+        <li><img src="images/4.jpg" /></li> 
+        <li><img src="images/5.jpg" /></li> 
+        <li><img src="images/6.jpg" /></li> 
+    </ul> 
+    <div class="small_pic"> 
+        <ul style="width:390px;"> 
+            <li style="filter: 100; opacity: 1;"><img src="images/1.jpg" /></li> 
+            <li><img src="images/2.jpg" /></li> 
+            <li><img src="images/3.jpg" /></li> 
+            <li><img src="images/4.jpg" /></li> 
+            <li><img src="images/5.jpg" /></li> 
+            <li><img src="images/6.jpg" /></li> 
+        </ul> 
+    </div> 
+</div> 
+
+</body> 
+</html> 

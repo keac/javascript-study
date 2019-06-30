@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+#div1{
+	width:100px;
+	height:100px;
+	background-color:#DDE300;
+	position:absolute;
+}
+#div2{
+	width:100px;
+	height:100px;
+	background-color:#00E954;
+	position:absolute;
+}
+#div3{
+	width:100px;
+	height:100px;
+	background-color:#00E954;
+	position:absolute;
+}
+
+</style>
+<script src="Tmover.js"></script>
+<script src="Tmover2.js"></script>
+<script>
+window.onload=function()
+{
+	new Mover('div1');
+
+	new Mover2('div3');
+}
+</script>
+</head>
+
+<body>
+<div id="div1">
+111
+</div>
+
+<div id="div3">
+</div>
+</body>
+</html>

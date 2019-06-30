@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+#div1 input {
+	width: 100px;
+	border: 0px;
+}
+#div1 input.active {
+	background-color: #FF7E00;
+}
+#div1 div {
+	width: 200px;
+	height: 200px;
+	margin: 5px;
+	background-color: #DDDDDD;
+	display: none;
+}
+#div1 div.active {
+	display: block;
+}
+</style>
+<script>
+window.onload=function(){
+	new TabSwitch('div1');
+	}
+function TabSwitch(id)
+ {
+	 var _this=this;
+	 oDiv1=document.getElementById(id);
+	 this.oBt=oDiv1.getElementsByTagName('input');
+	 this.oDiv=oDiv1.getElementsByTagName('div');
+	 for(var i=0;i<this.oBt.length;i++)
+	 {
+		 this.oBt[i].index=i;
+		 this.oBt[i].onclick=function()
+		 {
+			 _this.fnClick(this);
+		 } 
+	 }
+ }
+TabSwitch.prototype.fnClick=function(oBt)
+{
+  for(var t=0;t<this.oBt.length;t++)
+  {
+	this.oBt[t].className=''; 
+	this.oDiv[t].className='';
+  }
+  oBt.className='active';
+  this.oDiv[oBt.index].className='active';
+}
+	
+</script>
+</head>
+
+<body>
+<div id="div1">
+  <input type="button" value="1" class="active">
+  <input type="button" value="2">
+  <input type="button" value="3">
+  <div class="active">111 </div>
+  <div> 2222</div>
+  <div>333 </div>
+</div>
+</body>
+</html>

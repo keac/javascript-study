@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>XX信息管理系统</title>
+
+<script>
+window.onload=function(){
+	function C_Color(){
+		var colorb='';
+	for(var i=0;i<oTa1.tBodies[0].rows.length;i++){
+
+		oTa1.tBodies[0].rows[i].onmouseover=function(){
+			colorb=this.style.background;
+			this.style.background='green';
+           }
+		   oTa1.tBodies[0].rows[i].onmouseout=function(){
+			this.style.background=colorb
+		oTa1.tBodies[0].rows[i].style.background='';
+		}else{
+
+		oTa1.tBodies[0].rows[i].style.background='#ccc';
+		}
+		oTa1.tBodies[0].getElementsByTagName('a')[i].onclick=function(){
+			oTa1.tBodies[0].removeChild(this.parentNode.parentNode);
+        }
+	}
+}
+	var oTa1=document.getElementById('ta1');
+	var oBt1=document.getElementById('bt1');
+	var sName=document.getElementById('name');
+	var sAge=document.getElementById('age');
+	var iNum=oTa1.tBodies[0].rows.length;
+	var sSo=document.getElementById('search');
+	var oBt2=document.getElementById('bt2');
+	var oSOr=document.getElementsByName('search_r');
+	 C_Color()
+		oBt1.onclick=function(){
+		var oTrAdd=document.createElement('tr');
+
+		var oTdAdd=document.createElement('td');
+		iNum=oTdAdd.innerHTML=iNum+1;
+		oTrAdd.appendChild(oTdAdd);
+
+		var oTdAdd=document.createElement('td');
+		oTdAdd.innerHTML=sName.value;
+		oTrAdd.appendChild(oTdAdd);
+
+		var oTdAdd=document.createElement('td');
+		oTdAdd.innerHTML=sAge.value;
+		oTrAdd.appendChild(oTdAdd);
+
+		var oTdAdd=document.createElement('td');
+		oTdAdd.innerHTML='<a href="javascript:;">删除</a>';
+		oTrAdd.appendChild(oTdAdd);
+		oTa1.tBodies[0].appendChild(oTrAdd);
+
+		 C_Color()
+		}
+		oBt2.onclick=function(){
+			var arr=sSo.value.split(' ');
+			function c_Radio(){
+			for(var c=0;c < oSOr.length;c++){
+				if(oSOr[c].checked){
+				return c;
+				}
+				}
+
+			}
+			for(var i=0;i<arr.length;i++){
+			for(var j=0;j<oTa1.tBodies[0].rows.length;j++){
+				var t=oTa1.tBodies[0].rows[j].cells[1].innerHTML;
+				if(t.search(arr[i])!=-1){
+		if(c_Radio()=='0'){
+					oTa1.tBodies[0].rows[j].style.background='red';
+		}else{
+			for(var v=0;v<oTa1.tBodies[0].rows.length;v++){
+				if(v==j){
+					continue;
+				}else{
+			oTa1.tBodies[0].rows[v].style.display='none'
+				}
+			}
+			}
+			}
+			}
+			}
+			}
+
+
+
+
+
+	}
+</script>
+</head>
+<body>
+姓名：<input type="text" id="name">&nbsp;年龄：<input type="text" id="age"><input id="bt1" type="button" value="添加"><br><br>
+
+搜索功能：<input type="text" id="search" > <input id="bt2" type="button" value="搜索"> <br>
+
+
+    <input type="radio" name="search_r" value="0"  checked="checked">
+高亮显示
+
+
+    <input type="radio" name="search_r" value="1">
+筛选
+<br>
+
+<table id="ta1" border="1px" width="1000px">
+  <thead>
+    <tr>
+      <td> ID </td>
+      <td> 姓名 </td>
+      <td> 年龄 </td>
+      <td> 操作 </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> 1 </td>
+      <td> 张三 </td>
+      <td> 20 </td>
+      <td><a href="javascript:;">删除</a></td>
+    </tr>
+    <tr>
+      <td> 2 </td>
+      <td> 李四 </td>
+      <td> 32 </td>
+      <td><a href="javascript:;">删除</a></td>
+    </tr>
+    <tr>
+      <td> 3 </td>
+      <td> 小五 </td>
+      <td> 25 </td>
+      <td><a href="javascript:;">删除</a></td>
+    </tr>
+     <tr>
+      <td> 4 </td>
+      <td> 李小花 </td>
+      <td> 25 </td>
+      <td><a href="javascript:;">删除</a></td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

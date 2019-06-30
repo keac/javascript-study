@@ -1,0 +1,23 @@
+ <!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+.focused {    background: #abcdef;}
+</style>
+<script type="text/javascript" src="../jquery-2.2.2.js"></script>
+<script>
+$(document).ready(function(e) {
+alert($("td:parent").text());
+});
+</script> 
+</head>
+<body>
+<table>
+  <tr><td>Value 1</td><td></td></tr>
+  <tr><td>Value 2</td><td></td></tr>
+</table>
+
+</body>
+</html>

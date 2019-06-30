@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>匀速运动停止</title>
+<style>
+#div1{
+	width:100px;
+	height:100px;
+	left:100px;
+	position:absolute;
+	background-color:#FF0004;
+}
+</style>
+
+
+<script>
+		
+		var timer=null;
+			speed=0;
+		function mover(iTarget){
+			clearInterval(timer);
+			var oDiv1=document.getElementById('div1');
+			
+			
+			timer=setInterval(function(){
+			if(oDiv1.offsetLeft<iTarget){
+				var speed=10;
+			}else{
+				var speed=-10;	
+			}
+			
+			if(Math.abs(iTarget-oDiv1.offsetLeft)<=speed){
+				oDiv1.style.left=iTarget;
+				clearInterval(timer);
+			}else{
+				oDiv1.style.left=oDiv1.offsetLeft+speed+'px';
+				
+			}
+			},30)
+		}
+	
+
+</script>
+</head>
+
+<body>
+<input type="button" id="bt1" value="200" onClick="mover(1000)">
+<input type="button" id="bt2" value="300" onClick="mover(200)" >
+<div id="div1">
+
+</div>
+</body>
+</html>

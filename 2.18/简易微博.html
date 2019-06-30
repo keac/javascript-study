@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>简易微博</title>
+<style>
+
+</style>
+<script>
+window.onload=function(){
+	var bt1=document.getElementById('bt1');
+	bt1.onclick=function(){
+	var sTxt=document.getElementById('Tnr');
+	var oUl=document.getElementById('ul1')
+	var oLi=document.createElement('li');	
+	var aLi=oUl.getElementsByTagName('li')
+	oLi.innerHTML=sTxt.value;
+	
+	if(aLi.length==0){
+	oUl.appendChild(oLi);
+	}else{
+		
+	oUl.insertBefore(oLi,aLi[0]);
+	}
+	}
+	}
+</script>
+</head>
+
+<body>
+<input  id="Tnr" type="text">
+<input id="bt1" type="button" value="来一发">
+
+以下是最新微博
+<ul id="ul1">
+
+</ul>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>现实隐藏</title>
+<style>
+.div1{
+	width:100px;
+	height:200px;
+	background-color:#F10004;
+}
+.div2{
+	width:100px;
+	height:200px;
+	background-color:#F10004;
+}
+input{
+	width:100px;
+	height:30px;
+	
+	}
+</style>
+<script>
+function show(){
+	var odiv=document.getElementById('div1');
+	odiv.className='div2';	
+	}
+
+</script>
+
+</head>
+
+<body>
+<div id="div1" class="div1">
+12312321
+</div>
+<input type="button" onClick="show()"> 
+</body>
+</html>

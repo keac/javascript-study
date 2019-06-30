@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>完整多运动框架</title>
+<style>
+div {
+	width: 100px;
+	height: 100px;
+	margin: 5px;
+	background-color: #7ACB00;
+	
+}
+</style>
+<script>
+window.onload=function(){
+function getStyle(obj,name){
+		if(obj.currentStyle){
+			return obj.currentStyle[name];
+		}else{
+			return getComputedStyle(obj,null)[name];
+		}
+}
+ 
+function mover(obj,arr,iTarget){
+  if(arr=='opacity'){
+	  iTarget*=100;
+  }
+	 obj.timer;
+	clearInterval(obj.timer);
+	
+	obj.timer=setInterval(function(){
+		if(arr=='opacity'){
+			var car=parseFloat(getStyle(obj,arr))*100;
+			
+			
+		}else{
+			var car=parseInt(getStyle(obj,arr));
+		}
+		
+		speed=(iTarget-car)/10;
+		speed=speed>0?Math.ceil(speed):Math.floor(speed);
+		
+		if(obj.style[arr]==iTarget){
+				clearInterval(obj.timer);
+			}else{
+				if(arr=='opacity'){
+					obj.style[arr]=(car+speed)/100;
+					obj.style[arr]='alpha(opacity:'+(car+speed)+')';
+					oTxt1.value=speed;
+				}else{
+				obj.style[arr]=car+speed+'px';
+				}
+				
+			}
+		
+		},30)
+	
+	}
+	oTxt1=document.getElementById('txt1')
+	oDiv1=document.getElementById('div1')
+	oDiv2=document.getElementById('div2')
+	oDiv3=document.getElementById('div3')
+	oDiv1.onmouseover=function(){
+			mover(oDiv1,'width',200)
+		}
+	oDiv1.onmouseout=function(){
+			mover(oDiv1,'width',100)
+		}
+		oDiv2.onmouseover=function(){
+			mover(oDiv2,'height',200)
+		}
+	oDiv2.onmouseout=function(){
+			mover(oDiv2,'height',100)
+		}
+	oDiv3.onmouseover=function(){
+			mover(oDiv3,'opacity',0.3)
+		}
+	oDiv3.onmouseout=function(){
+			mover(oDiv3,'opacity',0.8)
+		}
+
+}
+
+</script>
+</head>
+
+<body>
+<input type="text" id="txt1">
+<div id="div1"> </div>
+<div id="div2"> </div>
+<div id="div3"> </div>
+<div> </div>
+<div> </div>
+</body>
+</html>

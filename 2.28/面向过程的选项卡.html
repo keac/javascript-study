@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+#div1 input {
+	width: 100px;
+	border: 0px;
+}
+#div1 input.active {
+	background-color: #FF7E00;
+}
+#div1 div {
+	width: 200px;
+	height: 200px;
+	margin: 5px;
+	background-color: #DDDDDD;
+	display: none;
+}
+#div1 div.active {
+	display: block;
+}
+</style>
+<script>
+ window.onload=function()
+ {
+	 oDiv1=document.getElementById('div1');
+	 oBt=oDiv1.getElementsByTagName('input');
+	 oDiv=oDiv1.getElementsByTagName('div');
+	 for(var i=0;i<oBt.length;i++)
+	 {
+		 oBt[i].index=i;
+		 oBt[i].onclick=function()
+		 {
+			 for(var t=0;t<oBt.length;t++)
+			 {
+				oBt[t].className=''; 
+				oDiv[t].className='';
+			 }
+			 this.className='active';
+			 oDiv[this.index].className='active';
+		 } 
+	 }
+ }
+</script>
+</head>
+
+<body>
+<div id="div1">
+  <input type="button" value="1" class="active">
+  <input type="button" value="2">
+  <input type="button" value="3">
+  <div class="active">111 </div>
+  <div> 2222</div>
+  <div>333 </div>
+</div>
+</body>
+</html>

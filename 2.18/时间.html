@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+ul {
+	list-style: none;
+}
+li{
+	width:50px;
+	float:left;
+	text-align:center;
+}
+</style>
+<script>
+window.onload=function(){
+	
+	function toDou(n){
+		if(n<10){
+			
+			return '0'+n;
+			
+			}else{
+				
+		    return ''+n;
+			
+			}
+		
+		}
+		oLi=document.getElementsByTagName('li');
+		
+	
+function tick(){
+	var oDate=new Date();
+	var str=toDou(oDate.getHours())+toDou(oDate.getMinutes())+toDou(oDate.getSeconds());
+	for(var i=0;i<oLi.length;i++){
+		
+		oLi[i].innerHTML=str.charAt(i);
+		
+		}
+
+}
+setInterval(tick,1000);
+tick();
+
+	}
+</script>
+</head>
+
+<body>
+<ul>
+  <li> 0</li>
+  <li>0 </li>
+  <li> 0</li>
+  <li> 0</li>
+  <li> 0</li>
+  <li>0 </li>
+</ul>
+</body>
+</html>
